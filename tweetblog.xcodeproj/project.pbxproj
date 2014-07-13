@@ -1,0 +1,521 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		22EF484B191601FE006A37A3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22EF484A191601FE006A37A3 /* Foundation.framework */; };
+		22EF484D191601FE006A37A3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22EF484C191601FE006A37A3 /* CoreGraphics.framework */; };
+		22EF484F191601FE006A37A3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22EF484E191601FE006A37A3 /* UIKit.framework */; };
+		22EF4855191601FE006A37A3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 22EF4853191601FE006A37A3 /* InfoPlist.strings */; };
+		22EF4857191601FE006A37A3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 22EF4856191601FE006A37A3 /* main.m */; };
+		22EF485B191601FE006A37A3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 22EF485A191601FE006A37A3 /* AppDelegate.m */; };
+		22EF485E191601FE006A37A3 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22EF485C191601FE006A37A3 /* Main_iPhone.storyboard */; };
+		22EF4861191601FE006A37A3 /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22EF485F191601FE006A37A3 /* Main_iPad.storyboard */; };
+		22EF4864191601FE006A37A3 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22EF4863191601FE006A37A3 /* ViewController.m */; };
+		22EF4866191601FE006A37A3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22EF4865191601FE006A37A3 /* Images.xcassets */; };
+		22EF486D191601FE006A37A3 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22EF486C191601FE006A37A3 /* XCTest.framework */; };
+		22EF486E191601FE006A37A3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22EF484A191601FE006A37A3 /* Foundation.framework */; };
+		22EF486F191601FE006A37A3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22EF484E191601FE006A37A3 /* UIKit.framework */; };
+		22EF4877191601FE006A37A3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 22EF4875191601FE006A37A3 /* InfoPlist.strings */; };
+		22EF4879191601FE006A37A3 /* tweetblogTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 22EF4878191601FE006A37A3 /* tweetblogTests.m */; };
+		22EF488319160EE1006A37A3 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22EF488219160EE1006A37A3 /* Accounts.framework */; };
+		22EF488519160EEE006A37A3 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22EF488419160EEE006A37A3 /* Social.framework */; };
+		22EF488819171E2B006A37A3 /* MyTimelineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22EF488719171E2B006A37A3 /* MyTimelineViewController.m */; };
+		22EF488B1917556F006A37A3 /* BlogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22EF488A1917556F006A37A3 /* BlogViewController.m */; };
+		D4B8E1BE19187BC600F93AA5 /* CKCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = D4B8E1BC19187BC600F93AA5 /* CKCalendarView.m */; };
+		D4B8E1C419187CB200F93AA5 /* CalenderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4B8E1C319187CB200F93AA5 /* CalenderViewController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		22EF4870191601FE006A37A3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 22EF483F191601FE006A37A3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 22EF4846191601FE006A37A3;
+			remoteInfo = tweetblog;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		22EF4847191601FE006A37A3 /* tweetblog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tweetblog.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		22EF484A191601FE006A37A3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		22EF484C191601FE006A37A3 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		22EF484E191601FE006A37A3 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		22EF4852191601FE006A37A3 /* tweetblog-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "tweetblog-Info.plist"; sourceTree = "<group>"; };
+		22EF4854191601FE006A37A3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		22EF4856191601FE006A37A3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		22EF4858191601FE006A37A3 /* tweetblog-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "tweetblog-Prefix.pch"; sourceTree = "<group>"; };
+		22EF4859191601FE006A37A3 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		22EF485A191601FE006A37A3 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		22EF485D191601FE006A37A3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
+		22EF4860191601FE006A37A3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
+		22EF4862191601FE006A37A3 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		22EF4863191601FE006A37A3 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		22EF4865191601FE006A37A3 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		22EF486B191601FE006A37A3 /* tweetblogTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = tweetblogTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		22EF486C191601FE006A37A3 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		22EF4874191601FE006A37A3 /* tweetblogTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "tweetblogTests-Info.plist"; sourceTree = "<group>"; };
+		22EF4876191601FE006A37A3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		22EF4878191601FE006A37A3 /* tweetblogTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = tweetblogTests.m; sourceTree = "<group>"; };
+		22EF488219160EE1006A37A3 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
+		22EF488419160EEE006A37A3 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		22EF488619171E2B006A37A3 /* MyTimelineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyTimelineViewController.h; path = ../MyTimelineViewController.h; sourceTree = "<group>"; };
+		22EF488719171E2B006A37A3 /* MyTimelineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyTimelineViewController.m; path = ../MyTimelineViewController.m; sourceTree = "<group>"; };
+		22EF48891917556F006A37A3 /* BlogViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlogViewController.h; sourceTree = "<group>"; };
+		22EF488A1917556F006A37A3 /* BlogViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlogViewController.m; sourceTree = "<group>"; };
+		D49FD1DF1917D5C500CDE898 /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
+		D4B8E1BC19187BC600F93AA5 /* CKCalendarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKCalendarView.m; sourceTree = "<group>"; };
+		D4B8E1BD19187BC600F93AA5 /* CKCalendarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKCalendarView.h; sourceTree = "<group>"; };
+		D4B8E1C219187CB200F93AA5 /* CalenderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalenderViewController.h; sourceTree = "<group>"; };
+		D4B8E1C319187CB200F93AA5 /* CalenderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalenderViewController.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		22EF4844191601FE006A37A3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				22EF488519160EEE006A37A3 /* Social.framework in Frameworks */,
+				22EF488319160EE1006A37A3 /* Accounts.framework in Frameworks */,
+				22EF484D191601FE006A37A3 /* CoreGraphics.framework in Frameworks */,
+				22EF484F191601FE006A37A3 /* UIKit.framework in Frameworks */,
+				22EF484B191601FE006A37A3 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		22EF4868191601FE006A37A3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				22EF486D191601FE006A37A3 /* XCTest.framework in Frameworks */,
+				22EF486F191601FE006A37A3 /* UIKit.framework in Frameworks */,
+				22EF486E191601FE006A37A3 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		22EF483E191601FE006A37A3 = {
+			isa = PBXGroup;
+			children = (
+				22EF4850191601FE006A37A3 /* tweetblog */,
+				22EF4872191601FE006A37A3 /* tweetblogTests */,
+				22EF4849191601FE006A37A3 /* Frameworks */,
+				22EF4848191601FE006A37A3 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		22EF4848191601FE006A37A3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				22EF4847191601FE006A37A3 /* tweetblog.app */,
+				22EF486B191601FE006A37A3 /* tweetblogTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		22EF4849191601FE006A37A3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D49FD1DF1917D5C500CDE898 /* Twitter.framework */,
+				22EF488419160EEE006A37A3 /* Social.framework */,
+				22EF488219160EE1006A37A3 /* Accounts.framework */,
+				22EF484A191601FE006A37A3 /* Foundation.framework */,
+				22EF484C191601FE006A37A3 /* CoreGraphics.framework */,
+				22EF484E191601FE006A37A3 /* UIKit.framework */,
+				22EF486C191601FE006A37A3 /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		22EF4850191601FE006A37A3 /* tweetblog */ = {
+			isa = PBXGroup;
+			children = (
+				22EF4859191601FE006A37A3 /* AppDelegate.h */,
+				22EF485A191601FE006A37A3 /* AppDelegate.m */,
+				D4B8E1BC19187BC600F93AA5 /* CKCalendarView.m */,
+				D4B8E1BD19187BC600F93AA5 /* CKCalendarView.h */,
+				22EF485C191601FE006A37A3 /* Main_iPhone.storyboard */,
+				22EF485F191601FE006A37A3 /* Main_iPad.storyboard */,
+				22EF4862191601FE006A37A3 /* ViewController.h */,
+				22EF4863191601FE006A37A3 /* ViewController.m */,
+				22EF488619171E2B006A37A3 /* MyTimelineViewController.h */,
+				22EF488719171E2B006A37A3 /* MyTimelineViewController.m */,
+				D4B8E1C219187CB200F93AA5 /* CalenderViewController.h */,
+				D4B8E1C319187CB200F93AA5 /* CalenderViewController.m */,
+				22EF48891917556F006A37A3 /* BlogViewController.h */,
+				22EF488A1917556F006A37A3 /* BlogViewController.m */,
+				22EF4865191601FE006A37A3 /* Images.xcassets */,
+				22EF4851191601FE006A37A3 /* Supporting Files */,
+			);
+			path = tweetblog;
+			sourceTree = "<group>";
+		};
+		22EF4851191601FE006A37A3 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				22EF4852191601FE006A37A3 /* tweetblog-Info.plist */,
+				22EF4853191601FE006A37A3 /* InfoPlist.strings */,
+				22EF4856191601FE006A37A3 /* main.m */,
+				22EF4858191601FE006A37A3 /* tweetblog-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		22EF4872191601FE006A37A3 /* tweetblogTests */ = {
+			isa = PBXGroup;
+			children = (
+				22EF4878191601FE006A37A3 /* tweetblogTests.m */,
+				22EF4873191601FE006A37A3 /* Supporting Files */,
+			);
+			path = tweetblogTests;
+			sourceTree = "<group>";
+		};
+		22EF4873191601FE006A37A3 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				22EF4874191601FE006A37A3 /* tweetblogTests-Info.plist */,
+				22EF4875191601FE006A37A3 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		22EF4846191601FE006A37A3 /* tweetblog */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 22EF487C191601FE006A37A3 /* Build configuration list for PBXNativeTarget "tweetblog" */;
+			buildPhases = (
+				22EF4843191601FE006A37A3 /* Sources */,
+				22EF4844191601FE006A37A3 /* Frameworks */,
+				22EF4845191601FE006A37A3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = tweetblog;
+			productName = tweetblog;
+			productReference = 22EF4847191601FE006A37A3 /* tweetblog.app */;
+			productType = "com.apple.product-type.application";
+		};
+		22EF486A191601FE006A37A3 /* tweetblogTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 22EF487F191601FE006A37A3 /* Build configuration list for PBXNativeTarget "tweetblogTests" */;
+			buildPhases = (
+				22EF4867191601FE006A37A3 /* Sources */,
+				22EF4868191601FE006A37A3 /* Frameworks */,
+				22EF4869191601FE006A37A3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				22EF4871191601FE006A37A3 /* PBXTargetDependency */,
+			);
+			name = tweetblogTests;
+			productName = tweetblogTests;
+			productReference = 22EF486B191601FE006A37A3 /* tweetblogTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		22EF483F191601FE006A37A3 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = alice;
+				TargetAttributes = {
+					22EF486A191601FE006A37A3 = {
+						TestTargetID = 22EF4846191601FE006A37A3;
+					};
+				};
+			};
+			buildConfigurationList = 22EF4842191601FE006A37A3 /* Build configuration list for PBXProject "tweetblog" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 22EF483E191601FE006A37A3;
+			productRefGroup = 22EF4848191601FE006A37A3 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				22EF4846191601FE006A37A3 /* tweetblog */,
+				22EF486A191601FE006A37A3 /* tweetblogTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		22EF4845191601FE006A37A3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				22EF4861191601FE006A37A3 /* Main_iPad.storyboard in Resources */,
+				22EF4866191601FE006A37A3 /* Images.xcassets in Resources */,
+				22EF485E191601FE006A37A3 /* Main_iPhone.storyboard in Resources */,
+				22EF4855191601FE006A37A3 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		22EF4869191601FE006A37A3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				22EF4877191601FE006A37A3 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		22EF4843191601FE006A37A3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D4B8E1BE19187BC600F93AA5 /* CKCalendarView.m in Sources */,
+				22EF4864191601FE006A37A3 /* ViewController.m in Sources */,
+				22EF488819171E2B006A37A3 /* MyTimelineViewController.m in Sources */,
+				D4B8E1C419187CB200F93AA5 /* CalenderViewController.m in Sources */,
+				22EF488B1917556F006A37A3 /* BlogViewController.m in Sources */,
+				22EF485B191601FE006A37A3 /* AppDelegate.m in Sources */,
+				22EF4857191601FE006A37A3 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		22EF4867191601FE006A37A3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				22EF4879191601FE006A37A3 /* tweetblogTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		22EF4871191601FE006A37A3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 22EF4846191601FE006A37A3 /* tweetblog */;
+			targetProxy = 22EF4870191601FE006A37A3 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		22EF4853191601FE006A37A3 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				22EF4854191601FE006A37A3 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		22EF485C191601FE006A37A3 /* Main_iPhone.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				22EF485D191601FE006A37A3 /* Base */,
+			);
+			name = Main_iPhone.storyboard;
+			sourceTree = "<group>";
+		};
+		22EF485F191601FE006A37A3 /* Main_iPad.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				22EF4860191601FE006A37A3 /* Base */,
+			);
+			name = Main_iPad.storyboard;
+			sourceTree = "<group>";
+		};
+		22EF4875191601FE006A37A3 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				22EF4876191601FE006A37A3 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		22EF487A191601FE006A37A3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		22EF487B191601FE006A37A3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		22EF487D191601FE006A37A3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "tweetblog/tweetblog-Prefix.pch";
+				INFOPLIST_FILE = "tweetblog/tweetblog-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		22EF487E191601FE006A37A3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "tweetblog/tweetblog-Prefix.pch";
+				INFOPLIST_FILE = "tweetblog/tweetblog-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		22EF4880191601FE006A37A3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/tweetblog.app/tweetblog";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "tweetblog/tweetblog-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "tweetblogTests/tweetblogTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		22EF4881191601FE006A37A3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/tweetblog.app/tweetblog";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "tweetblog/tweetblog-Prefix.pch";
+				INFOPLIST_FILE = "tweetblogTests/tweetblogTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		22EF4842191601FE006A37A3 /* Build configuration list for PBXProject "tweetblog" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				22EF487A191601FE006A37A3 /* Debug */,
+				22EF487B191601FE006A37A3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		22EF487C191601FE006A37A3 /* Build configuration list for PBXNativeTarget "tweetblog" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				22EF487D191601FE006A37A3 /* Debug */,
+				22EF487E191601FE006A37A3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		22EF487F191601FE006A37A3 /* Build configuration list for PBXNativeTarget "tweetblogTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				22EF4880191601FE006A37A3 /* Debug */,
+				22EF4881191601FE006A37A3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 22EF483F191601FE006A37A3 /* Project object */;
+}
