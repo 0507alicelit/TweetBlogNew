@@ -50,7 +50,6 @@
                                      ];
                  
                  
-                 
                  // リクエストに認証情報を付加
                  posts.account = twitterAccount;
                  //ステータスバーのActivity Indicatorを開始
