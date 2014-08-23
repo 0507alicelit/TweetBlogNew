@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#define MAX_HEIGHT 2000
 
 @interface ViewController ()
 
@@ -104,6 +105,14 @@
     
     //カプセル上の部品
     UITextView *tweetTextView = (UITextView *)[cell viewWithTag:3];
+        //textViewの書き込みを禁止
+        tweetTextView.editable = NO;
+//    CGSize maxSize = CGSizeMake(parentWidth,parentHeight);
+//    CGSize titleLabelSize = [tweetTextView sizeThatFits:maxSize];
+        //textviewの大きさを最適化
+        CGSize minSize = CGSizeMake(320,10);
+        [tweetTextView sizeThatFits:minSize];
+        //CGSize titleLabelSize = [_titleLabel sizeThatFits:maxSize];
     UILabel *userLabel = (UILabel *)[cell viewWithTag:1];
     UILabel *userIDLabel = (UILabel *)[cell viewWithTag:2];
     UIImageView *userImageView = (UIImageView *)[cell viewWithTag:4];
@@ -122,7 +131,27 @@
     NSURL *userImagePathURL =[[NSURL alloc] initWithString:userImagePath];
     NSData *userImagePathData = [[NSData alloc] initWithContentsOfURL:userImagePathURL];
     userImageView.image = [[UIImage alloc] initWithData:userImagePathData];
+    
+    CGRect frame = tweetTextView.frame;
+    frame.size.height = tweetTextView.contentSize.height;
+    
+    /*
+    CGSize size = [tweet[@"text"] sizeWithFont:[UIFont systemFontOfSize:14]
+                             constrainedToSize:CGSizeMake(100, MAX_HEIGHT)];
+    tweetTextView.frame = CGRectMake(93, 78, 207, size.height + 10);
+    CGSize cell = CGSizeMake(207, size.height + 10);
+     */
     return cell;
+     
 }
 
 @end
+
+
+
+
+
+
+
+
+
