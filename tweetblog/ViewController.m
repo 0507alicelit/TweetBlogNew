@@ -7,10 +7,14 @@
 //
 
 #import "ViewController.h"
+#import "RZCellSizeManager.h"
 #define MAX_HEIGHT 2000
 #define WIDTH 202
 
 @interface ViewController ()
+
+@property (strong, nonatomic) NSArray *objects;  // Cellで使用するデータ
+@property (strong, nonatomic) RZCellSizeManager *sizeManager;  // RZCellSizeManagerのインスタンス
 
 @end
 
@@ -20,6 +24,28 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    
+    
+    
+    
+//    // RZCellSizeManagerの初期化
+//    _sizeManager = [[RZCellSizeManager alloc] init];
+//    
+//    // RZCellSizeManagerにカスタムセルの登録
+//    [_sizeManager registerCellClassName:NSStringFromClass([TweetCell class])
+//                           withNibNamed:nil
+//                     forReuseIdentifier:@"CustomCell"
+//                 withConfigurationBlock:^(CustomCell *cell, SomeObject *object) {
+//                     // カスタムセルに値をセットしてレイアウト変更する
+//                     cell.someObject = object;
+//                 }];
+    
+    //cell = [tableView dequeueReusableCellWithIdentifier:@"TweetCell"];
+    
+     _customCell = (CustomCell *)[tlTableView dequeueReusableCellWithIdentifier:@"TweetCell"]; // 追加
+    
+    [self getAccount];
+    
     [self twitterTL];
 }
 
@@ -29,7 +55,7 @@
     // Dispose of any resources that can be recreated.
 }
 
--(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+-(NSInteger)numberOfSectionsInTableView:tableView{
     return 1;
 }
 
@@ -46,11 +72,15 @@
     [self twitterTL];
 }
 
+-(void)getAccount{
+    //STEP1 ios内部に保存されてるアカウント情報を取得
+    account = [[ACAccountStore alloc] init];
+    accountType = [account accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
+
+}
+
 //教科書p13
 -(void)twitterTL{
-    //STEP1 ios内部に保存されてるアカウント情報を取得
-    ACAccountStore *account = [[ACAccountStore alloc] init];
-    ACAccountType *accountType = [account accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
     //ユーザーにTwitterの認証情報を使うことを確認
     [account requestAccessToAccountsWithType:accountType
                                      options:nil
@@ -101,57 +131,88 @@
 }
 
 -(UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    //セルのIdentiferを指定
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TweetCell"];
+    static NSString *identifier = @"TweetCell";
+    CustomCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
+    [self configureCell:cell atIndexPath:indexPath];
     
-    //カプセル上の部品
-    UILabel *userLabel = (UILabel *)[cell viewWithTag:1];
-    UILabel *userIDLabel = (UILabel *)[cell viewWithTag:2];
-    UILabel *tweetLabel = (UILabel *)[cell viewWithTag:3];
-    UIImageView *userImageView = (UIImageView *)[cell viewWithTag:4];
+    return cell;
+}
+
+- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
+{
+    CustomCell *customCell = (CustomCell *)cell;
     
     //セルに表示するtweetのJSONを解析し、NSDictionaryに
     NSDictionary *tweet = tweetArray[indexPath.row];
     NSDictionary *userInfo = tweet[@"user"];
     
     //セルにTweetの内容とユーザー名を表示
-    tweetLabel.text = [NSString stringWithFormat:@"%@",tweet[@"text"]];
+    customCell.tweetLabel.text = [NSString stringWithFormat:@"%@",tweet[@"text"]];
     
-    //最適な高さを調べる
-    CGSize maxSize = CGSizeMake(202,1000);
-    CGSize tweetLabelSize = [tweetLabel sizeThatFits:maxSize];
-    
-    
-    //NSLog(@"label座標  %@", NSStringFromCGSize(tweetLabelSize));
-    tweetLabel.frame = CGRectMake(93,68,tweetLabelSize.width, tweetLabelSize.height);
-    
-    userLabel.text = [NSString stringWithFormat:@"%@",userInfo[@"name"]];
-    userIDLabel.text = [NSString stringWithFormat:@"%@",userInfo[@"screen_name"]];
+    customCell.userNameLabel.text = [NSString stringWithFormat:@"%@",userInfo[@"name"]];
+    customCell.userIDLabel.text = [NSString stringWithFormat:@"%@",userInfo[@"screen_name"]];
     
     //セルにユーザーのimageを表示
     NSString *userImagePath = userInfo[@"profile_image_url"];
     NSURL *userImagePathURL =[[NSURL alloc] initWithString:userImagePath];
     NSData *userImagePathData = [[NSData alloc] initWithContentsOfURL:userImagePathURL];
-    userImageView.image = [[UIImage alloc] initWithData:userImagePathData];
+    customCell.userImageView.image = [[UIImage alloc] initWithData:userImagePathData];
     
-    CGSize cellmaxSize = CGSizeMake(360,1000);
-    CGSize cellSize = [tweetLabel sizeThatFits:cellmaxSize];
-    cellSize = CGSizeMake(cellSize.width,cellSize.height+50);
-    NSLog(@"user %@", userInfo[@"name"]);
-    NSLog(@"cell座標  %@", NSStringFromCGSize(cellSize));
-    NSLog(@"cell x %f", cell.frame.origin.x);
-    NSLog(@"cell y %f", cell.frame.origin.y);
-    cell.frame = CGRectMake(cell.frame.origin.x, cell.frame.origin.y,cellSize.width, cellSize.height);
-    return cell;
-     
+    [customCell.reply addTarget:self action:@selector(pushReply:event:)
+            forControlEvents:UIControlEventTouchUpInside];
+    [customCell.retweet addTarget:self action:@selector(pushRetweet:event:)
+               forControlEvents:UIControlEventTouchUpInside];
+    [customCell.favorite addTarget:self action:@selector(pushFavorite:event:)
+               forControlEvents:UIControlEventTouchUpInside];
 }
 
 -(CGFloat) tableView:(UITableView*)tableView heightForRowAtIndexPath:(NSIndexPath*)indexPath {
-    UITableViewCell *cell = (UITableViewCell*)[self tableView:tlTableView cellForRowAtIndexPath:indexPath];
-    return cell.frame.size.height;
+    [self configureCell:_customCell atIndexPath:indexPath];
+    [_customCell layoutSubviews];
+    CGFloat height = [_customCell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
     
-    
+    return height + 1;
 }
+
+- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 40.0;
+}
+
+-(void)pushReply: (UIButton *)sender
+           event:(UIEvent *)event{
+    // 押されたボタンのセルのインデックスを取得
+    UITouch *touch = [[event allTouches] anyObject];
+    CGPoint point = [touch locationInView:tlTableView];
+    NSIndexPath *indexPath = [tlTableView indexPathForRowAtPoint:point];
+    
+    // ログを出力
+    NSLog(@"Reply row : %d", indexPath.row);
+}
+
+-(void)pushRetweet: (UIButton *)sender
+           event:(UIEvent *)event{
+    // 押されたボタンのセルのインデックスを取得
+    UITouch *touch = [[event allTouches] anyObject];
+    CGPoint point = [touch locationInView:tlTableView];
+    NSIndexPath *indexPath = [tlTableView indexPathForRowAtPoint:point];
+    
+    // ログを出力
+    NSLog(@"Retweet row : %d", indexPath.row);
+}
+
+-(void)pushFavorite: (UIButton *)sender
+           event:(UIEvent *)event{
+    // 押されたボタンのセルのインデックスを取得
+    UITouch *touch = [[event allTouches] anyObject];
+    CGPoint point = [touch locationInView:tlTableView];
+    NSIndexPath *indexPath = [tlTableView indexPathForRowAtPoint:point];
+    
+    // ログを出力
+    NSLog(@"Favorite row : %d", indexPath.row);
+}
+
+
 
 @end
 

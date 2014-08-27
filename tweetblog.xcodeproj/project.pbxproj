@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2280295419AAB6AA009DF7EE /* RZCellSizeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2280295319AAB6AA009DF7EE /* RZCellSizeManager.m */; };
+		2280295819AC1662009DF7EE /* CustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2280295719AC1662009DF7EE /* CustomCell.m */; };
 		22EF484B191601FE006A37A3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22EF484A191601FE006A37A3 /* Foundation.framework */; };
 		22EF484D191601FE006A37A3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22EF484C191601FE006A37A3 /* CoreGraphics.framework */; };
 		22EF484F191601FE006A37A3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22EF484E191601FE006A37A3 /* UIKit.framework */; };
@@ -41,6 +43,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2280295219AAB6AA009DF7EE /* RZCellSizeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RZCellSizeManager.h; sourceTree = "<group>"; };
+		2280295319AAB6AA009DF7EE /* RZCellSizeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RZCellSizeManager.m; sourceTree = "<group>"; };
+		2280295619AC1662009DF7EE /* CustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCell.h; sourceTree = "<group>"; };
+		2280295719AC1662009DF7EE /* CustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCell.m; sourceTree = "<group>"; };
 		22EF4847191601FE006A37A3 /* tweetblog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tweetblog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		22EF484A191601FE006A37A3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		22EF484C191601FE006A37A3 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -100,6 +106,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2280295119AAB6AA009DF7EE /* RZCellSizeManager */ = {
+			isa = PBXGroup;
+			children = (
+				2280295219AAB6AA009DF7EE /* RZCellSizeManager.h */,
+				2280295319AAB6AA009DF7EE /* RZCellSizeManager.m */,
+			);
+			path = RZCellSizeManager;
+			sourceTree = "<group>";
+		};
 		22EF483E191601FE006A37A3 = {
 			isa = PBXGroup;
 			children = (
@@ -107,6 +122,7 @@
 				22EF4872191601FE006A37A3 /* tweetblogTests */,
 				22EF4849191601FE006A37A3 /* Frameworks */,
 				22EF4848191601FE006A37A3 /* Products */,
+				2280295119AAB6AA009DF7EE /* RZCellSizeManager */,
 			);
 			sourceTree = "<group>";
 		};
@@ -144,6 +160,8 @@
 				22EF485F191601FE006A37A3 /* Main_iPad.storyboard */,
 				22EF4862191601FE006A37A3 /* ViewController.h */,
 				22EF4863191601FE006A37A3 /* ViewController.m */,
+				2280295619AC1662009DF7EE /* CustomCell.h */,
+				2280295719AC1662009DF7EE /* CustomCell.m */,
 				22EF488619171E2B006A37A3 /* MyTimelineViewController.h */,
 				22EF488719171E2B006A37A3 /* MyTimelineViewController.m */,
 				D4B8E1C219187CB200F93AA5 /* CalenderViewController.h */,
@@ -283,6 +301,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2280295419AAB6AA009DF7EE /* RZCellSizeManager.m in Sources */,
 				D4B8E1BE19187BC600F93AA5 /* CKCalendarView.m in Sources */,
 				22EF4864191601FE006A37A3 /* ViewController.m in Sources */,
 				22EF488819171E2B006A37A3 /* MyTimelineViewController.m in Sources */,
@@ -290,6 +309,7 @@
 				22EF488B1917556F006A37A3 /* BlogViewController.m in Sources */,
 				22EF485B191601FE006A37A3 /* AppDelegate.m in Sources */,
 				22EF4857191601FE006A37A3 /* main.m in Sources */,
+				2280295819AC1662009DF7EE /* CustomCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
