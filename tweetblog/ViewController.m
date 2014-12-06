@@ -24,25 +24,12 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-    
-    
-    
-    
-//    // RZCellSizeManagerの初期化
-//    _sizeManager = [[RZCellSizeManager alloc] init];
-//    
-//    // RZCellSizeManagerにカスタムセルの登録
-//    [_sizeManager registerCellClassName:NSStringFromClass([TweetCell class])
-//                           withNibNamed:nil
-//                     forReuseIdentifier:@"CustomCell"
-//                 withConfigurationBlock:^(CustomCell *cell, SomeObject *object) {
-//                     // カスタムセルに値をセットしてレイアウト変更する
-//                     cell.someObject = object;
-//                 }];
-    
-    //cell = [tableView dequeueReusableCellWithIdentifier:@"TweetCell"];
-    
      _customCell = (CustomCell *)[tlTableView dequeueReusableCellWithIdentifier:@"TweetCell"]; // 追加
+    
+    //引っ張って更新
+    UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
+    [refreshControl addTarget:self action:@selector(onRefresh:) forControlEvents:UIControlEventValueChanged];
+    [tlTableView   addSubview:refreshControl];
     
     [self getAccount];
     
@@ -62,9 +49,13 @@
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return [tweetArray count];
 }
-
 -(IBAction)tweetButton{
+    [self tweet:@""];
+}
+
+-(void)tweet:(NSString*)message{
     SLComposeViewController *twitterPostVC = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
+    [twitterPostVC setInitialText:[NSString stringWithFormat:@"%@",message]];
     [self presentViewController:twitterPostVC animated:YES completion:nil];
 }
 
@@ -94,7 +85,7 @@
                  NSURL *requestAPI = [NSURL URLWithString:@"https://api.twitter.com/1.1/statuses/home_timeline.json"];
                  // 認証が必要な要求に関する設定
                  NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
-                 [parameters setObject:@"100" forKey:@"count"];
+                 [parameters setObject:@"30" forKey:@"count"];
                  [parameters setObject:@"1" forKey:@"include_entities"];
                  
                  //　リクエストを生成
@@ -130,6 +121,150 @@
      }];
 }
 
+-(void)replyWithIdStr:(NSString *)replyStr{
+    //ユーザーにTwitterの認証情報を使うことを確認
+    [account requestAccessToAccountsWithType:accountType
+                                     options:nil
+                                  completion:^(BOOL granted,NSError *error)
+     {
+         //ユーザーが許可した場合
+         if(granted == YES){
+             NSArray *arrayOfAccounts = [account accountsWithAccountType:accountType];
+             if([arrayOfAccounts count] > 0){
+                 ACAccount *twitterAccount = [arrayOfAccounts lastObject];
+                 NSString *url = [NSString stringWithFormat:@"https://api.twitter.com/1.1/statuses/in_reply_to_status_id/%@.json",replyStr];
+                 NSURL *requestAPI = [NSURL URLWithString:url];
+                 // 認証が必要な要求に関する設定
+                 NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
+                 
+                 // リプライIDを指定
+                 [parameters setObject:replyStr forKey:@"id"];
+                 
+                 // リプライメッセージを指定
+                 // = [NSString stringWithFormat:@"にゃー"];
+                 [parameters setObject:replyStr forKey:@"massage"];
+
+                 //　リクエストを生成
+                 SLRequest *posts = [SLRequest requestForServiceType:SLServiceTypeTwitter
+                                                       requestMethod:SLRequestMethodPOST
+                                                                 URL:requestAPI
+                                                          parameters:parameters
+                                     ];
+                 
+                 // リクエストに認証情報を付加
+                 posts.account = twitterAccount;
+                 //ステータスバーのActivity Indicatorを開始
+                 [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+                 //リクエストを発行
+                 [posts performRequestWithHandler:^(NSData *response, NSHTTPURLResponse *urlResponse, NSError *error){
+                     //STEP3 JSON配列を解析し、tweetをNSArrayの配列に入れる
+                     id result = [NSJSONSerialization JSONObjectWithData:response
+                                                                 options:NSJSONReadingMutableLeaves
+                                                                   error:&error];
+                     
+                     
+                     
+                     NSLog(@"%@",result);
+                 }];
+                 //tweet取得完了したらActivity Indicatorを終了
+                 [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+             }
+         } else {
+             NSLog(@"%@",[error localizedDescription]);
+         }
+     }];
+}
+
+-(void)retweetWithIdStr:(NSString *)idStr{
+    //ユーザーにTwitterの認証情報を使うことを確認
+    [account requestAccessToAccountsWithType:accountType
+                                     options:nil
+                                  completion:^(BOOL granted,NSError *error)
+     {
+         //ユーザーが許可した場合
+         if(granted == YES){
+             NSArray *arrayOfAccounts = [account accountsWithAccountType:accountType];
+             if([arrayOfAccounts count] > 0){
+                 ACAccount *twitterAccount = [arrayOfAccounts lastObject];
+                 NSString *url = [NSString stringWithFormat:@"https://api.twitter.com/1.1/statuses/retweet/%@.json",idStr];
+                 NSURL *requestAPI = [NSURL URLWithString:url];
+                 //　リクエストを生成
+                 SLRequest *posts = [SLRequest requestForServiceType:SLServiceTypeTwitter
+                                                       requestMethod:SLRequestMethodPOST
+                                                                 URL:requestAPI
+                                                          parameters:nil
+                                     ];
+                 
+                 // リクエストに認証情報を付加
+                 posts.account = twitterAccount;
+                 //ステータスバーのActivity Indicatorを開始
+                 [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+                 //リクエストを発行
+                 [posts performRequestWithHandler:^(NSData *response, NSHTTPURLResponse *urlResponse, NSError *error){
+                     //STEP3 JSON配列を解析し、tweetをNSArrayの配列に入れる
+                     id result = [NSJSONSerialization JSONObjectWithData:response
+                                                                 options:NSJSONReadingMutableLeaves
+                                                                   error:&error];
+                     
+                     
+                     
+                     NSLog(@"%@",result);
+                 }];
+                 //tweet取得完了したらActivity Indicatorを終了
+                 [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+             }
+         } else {
+             NSLog(@"%@",[error localizedDescription]);
+         }
+     }];
+}
+
+-(void)favoriteWithIdStr:(NSString *)idStr{
+    //ユーザーにTwitterの認証情報を使うことを確認
+    [account requestAccessToAccountsWithType:accountType
+                                     options:nil
+                                  completion:^(BOOL granted,NSError *error)
+     {
+         //ユーザーが許可した場合
+         if(granted == YES){
+             NSArray *arrayOfAccounts = [account accountsWithAccountType:accountType];
+             if([arrayOfAccounts count] > 0){
+                 ACAccount *twitterAccount = [arrayOfAccounts lastObject];
+                 NSURL *requestAPI = [NSURL URLWithString:@"https://api.twitter.com/1.1/favorites/create.json"];
+                 // 認証が必要な要求に関する設定
+                 NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
+                 [parameters setObject:idStr forKey:@"id"];
+                 //　リクエストを生成
+                 SLRequest *posts = [SLRequest requestForServiceType:SLServiceTypeTwitter
+                                                       requestMethod:SLRequestMethodPOST
+                                                                 URL:requestAPI
+                                                          parameters:parameters
+                                     ];
+                 
+                 // リクエストに認証情報を付加
+                 posts.account = twitterAccount;
+                 //ステータスバーのActivity Indicatorを開始
+                 [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+                 //リクエストを発行
+                 [posts performRequestWithHandler:^(NSData *response, NSHTTPURLResponse *urlResponse, NSError *error){
+                     //STEP3 JSON配列を解析し、tweetをNSArrayの配列に入れる
+                     id result = [NSJSONSerialization JSONObjectWithData:response
+                                                                  options:NSJSONReadingMutableLeaves
+                                                                    error:&error];
+                     
+                     
+
+                     NSLog(@"%@",result);
+                 }];
+                 //tweet取得完了したらActivity Indicatorを終了
+                 [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+             }
+         } else {
+             NSLog(@"%@",[error localizedDescription]);
+         }
+     }];
+}
+
 -(UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSString *identifier = @"TweetCell";
     CustomCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
@@ -138,8 +273,7 @@
     return cell;
 }
 
-- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
-{
+- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath{
     CustomCell *customCell = (CustomCell *)cell;
     
     //セルに表示するtweetのJSONを解析し、NSDictionaryに
@@ -150,13 +284,15 @@
     customCell.tweetLabel.text = [NSString stringWithFormat:@"%@",tweet[@"text"]];
     
     customCell.userNameLabel.text = [NSString stringWithFormat:@"%@",userInfo[@"name"]];
+    
     customCell.userIDLabel.text = [NSString stringWithFormat:@"%@",userInfo[@"screen_name"]];
     
     //セルにユーザーのimageを表示
     NSString *userImagePath = userInfo[@"profile_image_url"];
     NSURL *userImagePathURL =[[NSURL alloc] initWithString:userImagePath];
-    NSData *userImagePathData = [[NSData alloc] initWithContentsOfURL:userImagePathURL];
-    customCell.userImageView.image = [[UIImage alloc] initWithData:userImagePathData];
+    
+    [customCell.userImageView setImageWithURL:userImagePathURL placeholderImage:[UIImage imageNamed:@"piyo_gray.png"]];
+    //customCell.userImageView.image = [[UIImage alloc] initWithData:userImagePathData];
     
     [customCell.reply addTarget:self action:@selector(pushReply:event:)
             forControlEvents:UIControlEventTouchUpInside];
@@ -174,20 +310,25 @@
     return height + 1;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 40.0;
 }
 
--(void)pushReply: (UIButton *)sender
+-(void)pushReply:(UIButton *)sender
            event:(UIEvent *)event{
     // 押されたボタンのセルのインデックスを取得
     UITouch *touch = [[event allTouches] anyObject];
     CGPoint point = [touch locationInView:tlTableView];
     NSIndexPath *indexPath = [tlTableView indexPathForRowAtPoint:point];
     
+    NSDictionary *tweet = tweetArray[indexPath.row];
+    NSDictionary *userInfo = tweet[@"user"];
+    NSLog(@"this cell userid:%@",userInfo[@"screen_name"]);
+    //[self tweet:@"%@",replyStr];
+    
     // ログを出力
     NSLog(@"Reply row : %d", indexPath.row);
+    [self replyWithIdStr:@"518661717325131777"];
 }
 
 -(void)pushRetweet: (UIButton *)sender
@@ -197,8 +338,12 @@
     CGPoint point = [touch locationInView:tlTableView];
     NSIndexPath *indexPath = [tlTableView indexPathForRowAtPoint:point];
     
+    NSDictionary *tweet = tweetArray[indexPath.row];
+    NSString *idStr = tweet[@"id_str"];
     // ログを出力
     NSLog(@"Retweet row : %d", indexPath.row);
+    
+    [self retweetWithIdStr:idStr];
 }
 
 -(void)pushFavorite: (UIButton *)sender
@@ -208,9 +353,29 @@
     CGPoint point = [touch locationInView:tlTableView];
     NSIndexPath *indexPath = [tlTableView indexPathForRowAtPoint:point];
     
+    
+    NSDictionary *tweet = tweetArray[indexPath.row];
+    NSString *idStr = tweet[@"id_str"];
+    
     // ログを出力
     NSLog(@"Favorite row : %d", indexPath.row);
+    NSLog(@"Fav id %@",tweetArray[indexPath.row]);
+    NSLog(@"Fav id %@",idStr);
+    
+    [self favoriteWithIdStr:idStr];
+    
 }
+
+- (void)onRefresh:(UIRefreshControl *) refreshControl
+{
+    [refreshControl beginRefreshing];
+    
+    [self twitterTL];
+    
+    [refreshControl endRefreshing];
+    
+}
+
 
 
 

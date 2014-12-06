@@ -10,6 +10,10 @@
 #import <Accounts/Accounts.h>
 #import <Social/Social.h>
 #import "CustomCell.h"
+#import "UIImageView+WebCache.h"
+#import <Twitter/TWTweetComposeViewController.h>
+#import "TweetViewController.h"
+
 
 @interface ViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>{
     NSArray *tweetArray;
