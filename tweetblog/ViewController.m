@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "RZCellSizeManager.h"
+#import "UIButton+WebCache.h"
 #define MAX_HEIGHT 2000
 #define WIDTH 202
 
@@ -290,8 +291,11 @@
     //セルにユーザーのimageを表示
     NSString *userImagePath = userInfo[@"profile_image_url"];
     NSURL *userImagePathURL =[[NSURL alloc] initWithString:userImagePath];
-    
-    [customCell.userImageView setImageWithURL:userImagePathURL placeholderImage:[UIImage imageNamed:@"piyo_gray.png"]];
+    NSLog(@"%@",userImagePathURL);
+//[customCell.userImageView setImageWithURL:userImagePathURL placeholderImage:[UIImage imageNamed:@"piyo_gray.png"]];
+    [customCell.userImageView setImageWithURL:[NSURL URLWithString:@"http://pbs.twimg.com/profile_images/501928519585107968/NWDWIa1S_normal.png"] placeholderImage:[UIImage imageNamed:@"piyo_gray.png"] options:SDWebImageRetryFailed completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
+        if(image){NSLog(@"success");}else{NSLog(@"failed");}
+    } ];
     //customCell.userImageView.image = [[UIImage alloc] initWithData:userImagePathData];
     
     [customCell.reply addTarget:self action:@selector(pushReply:event:)

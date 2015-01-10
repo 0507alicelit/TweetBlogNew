@@ -66,6 +66,11 @@
     }] ;
 }
 
+
+
+
+
+///*
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     switch (buttonIndex) {
@@ -141,7 +146,9 @@
             break;
     }
 }
+//*/
 
+/*
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     switch (buttonIndex) {
@@ -233,6 +240,7 @@
             break;
     }
 }
+*/
 
 
 

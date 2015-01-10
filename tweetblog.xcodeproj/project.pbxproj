@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		222DEAA41A32FE3F00677E88 /* TweetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 222DEAA31A32FE3F00677E88 /* TweetViewController.m */; };
+		223A42FF1A611FCA008C4009 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 223A42FE1A611FCA008C4009 /* MapKit.framework */; };
+		223A43011A611FD0008C4009 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 223A43001A611FD0008C4009 /* ImageIO.framework */; };
 		2280295419AAB6AA009DF7EE /* RZCellSizeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2280295319AAB6AA009DF7EE /* RZCellSizeManager.m */; };
 		2280295819AC1662009DF7EE /* CustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2280295719AC1662009DF7EE /* CustomCell.m */; };
 		228B5EEA19BBF373009689AB /* MKAnnotationView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 228B5ECA19BBF373009689AB /* MKAnnotationView+WebCache.m */; };
@@ -96,6 +98,8 @@
 /* Begin PBXFileReference section */
 		222DEAA21A32FE3F00677E88 /* TweetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TweetViewController.h; sourceTree = "<group>"; };
 		222DEAA31A32FE3F00677E88 /* TweetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TweetViewController.m; sourceTree = "<group>"; };
+		223A42FE1A611FCA008C4009 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		223A43001A611FD0008C4009 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		2280295219AAB6AA009DF7EE /* RZCellSizeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RZCellSizeManager.h; sourceTree = "<group>"; };
 		2280295319AAB6AA009DF7EE /* RZCellSizeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RZCellSizeManager.m; sourceTree = "<group>"; };
 		2280295619AC1662009DF7EE /* CustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCell.h; sourceTree = "<group>"; };
@@ -172,6 +176,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				223A43011A611FD0008C4009 /* ImageIO.framework in Frameworks */,
+				223A42FF1A611FCA008C4009 /* MapKit.framework in Frameworks */,
 				22EF488519160EEE006A37A3 /* Social.framework in Frameworks */,
 				22EF488319160EE1006A37A3 /* Accounts.framework in Frameworks */,
 				22EF484D191601FE006A37A3 /* CoreGraphics.framework in Frameworks */,
@@ -267,6 +273,8 @@
 		22EF4849191601FE006A37A3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				223A43001A611FD0008C4009 /* ImageIO.framework */,
+				223A42FE1A611FCA008C4009 /* MapKit.framework */,
 				D49FD1DF1917D5C500CDE898 /* Twitter.framework */,
 				22EF488419160EEE006A37A3 /* Social.framework */,
 				22EF488219160EE1006A37A3 /* Accounts.framework */,
@@ -283,8 +291,8 @@
 			children = (
 				22EF4859191601FE006A37A3 /* AppDelegate.h */,
 				22EF485A191601FE006A37A3 /* AppDelegate.m */,
-				D4B8E1BC19187BC600F93AA5 /* CKCalendarView.m */,
 				D4B8E1BD19187BC600F93AA5 /* CKCalendarView.h */,
+				D4B8E1BC19187BC600F93AA5 /* CKCalendarView.m */,
 				22EF485C191601FE006A37A3 /* Main_iPhone.storyboard */,
 				22EF485F191601FE006A37A3 /* Main_iPad.storyboard */,
 				22EF4862191601FE006A37A3 /* ViewController.h */,
