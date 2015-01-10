@@ -291,11 +291,45 @@
     //セルにユーザーのimageを表示
     NSString *userImagePath = userInfo[@"profile_image_url"];
     NSURL *userImagePathURL =[[NSURL alloc] initWithString:userImagePath];
-    NSLog(@"%@",userImagePathURL);
+   // NSLog(@"%@",userImagePathURL);
+    
+    /*[[SDWebImageManager sharedManager] downloadImageWithURL:[NSURL URLWithString:@"http://pbs.twimg.com/profile_images/501928519585107968/NWDWIa1S_normal.png"]
+                                                    options:0
+                                                   progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+                                                   }
+                                                  completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+                                                      if(image){
+                                                          NSLog(@"success");
+                                                          
+                                                      }else{
+                                                          NSLog(@"failed,error:%@",[error debugDescription]);
+                                                      }
+                                                  }];
+    */
+    
+    [customCell.userImageView sd_setImageWithURL:userImagePathURL
+                                placeholderImage:nil
+                                       completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+                                           if (image) {
+                                               NSLog(@"success");
+                                           } else {
+                                               NSLog(@"%@",[error localizedDescription]);
+                                               
+                                           }
+        
+    }];
+    
+    
+    
 //[customCell.userImageView setImageWithURL:userImagePathURL placeholderImage:[UIImage imageNamed:@"piyo_gray.png"]];
-    [customCell.userImageView setImageWithURL:[NSURL URLWithString:@"http://pbs.twimg.com/profile_images/501928519585107968/NWDWIa1S_normal.png"] placeholderImage:[UIImage imageNamed:@"piyo_gray.png"] options:SDWebImageRetryFailed completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
-        if(image){NSLog(@"success");}else{NSLog(@"failed");}
-    } ];
+//    [customCell.userImageView setImageWithURL:[NSURL URLWithString:@"http://pbs.twimg.com/profile_images/501928519585107968/NWDWIa1S_normal.png"] placeholderImage:[UIImage imageNamed:@"piyo_gray.png"] options:SDWebImageRetryFailed completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
+//        if(image){
+//            NSLog(@"success");
+//        }else{
+//            NSLog(@"failed");
+//            NSLog(@"%@",[error localizedDescription]);
+//        }
+//    } ];
     //customCell.userImageView.image = [[UIImage alloc] initWithData:userImagePathData];
     
     [customCell.reply addTarget:self action:@selector(pushReply:event:)
