@@ -15,6 +15,18 @@
     [self tweetsearch];
 }
 
+/*
+ -(void)tweetsearch{
+ for(int i=0; i<20; i++){
+ UILabel *label = [[UILabel alloc] init];
+ label.frame = CGRectMake(rand()%280, rand()%540, 100, 20);
+ label.text = @"(´・ω・`)";
+ [self.view addSubview:label];
+ }
+ }
+ */
+
+///*
 -(void)tweetsearch{
     //STEP1 ios内部に保存されてるアカウント情報を取得
     ACAccountStore *account = [[ACAccountStore alloc] init];
@@ -35,10 +47,11 @@
                  //どうやってdate入れるの？？
                  NSUserDefaults *dateUd = [NSUserDefaults standardUserDefaults];//読み込み1
                  NSString *date = [dateUd stringForKey:@"date"];//読み込み2
+                 NSLog(@"date %@",date);
                  
                  // 認証が必要な要求に関する設定
                  NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
-                 NSString *paramString = [NSString stringWithFormat:@"from:sj_alice_0507 since:%@ until:2014-05-05", date];
+                 NSString *paramString = [NSString stringWithFormat:@"from:sj_alice_0507 since:%@ until:2016-05-05", date];
                  [parameters setObject:paramString forKey:@"q"];
                  [parameters setObject:@"20" forKey:@"count"];
                  
@@ -62,12 +75,17 @@
                          if(urlResponse.statusCode == 200) {
                              NSLog(@"success");
                              tweetDictionary = [NSJSONSerialization JSONObjectWithData:response
-                                                                  options:NSJSONReadingMutableLeaves
-                                                                    error:&error];
+                                                                               options:NSJSONReadingMutableLeaves
+                                                                                 error:&error];
                              if(tweetDictionary.count != 0){
                                  NSLog(@"count != 0");
                                  dispatch_async(dispatch_get_main_queue(), ^{
                                      [tlTableView reloadData];
+                                     for (int i = 0; i < [tweetDictionary count]; i++) {
+                                         // 配列から要素を取得する
+                                        // NSString *str = [tweetDictionary:[tweetDictionary count]];
+                                         //NSLog(@"%@", str);
+                                     }
                                  });
                              }
                              
@@ -86,6 +104,8 @@
          }
      }];
 }
+//*/
+
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 1;
@@ -112,14 +132,15 @@
     
     //セルにTweetの内容とユーザー名を表示
     [tweetTextView setText:[NSString stringWithFormat:@"%@", tweet[@"text"]]];
-
+    
     //セルにユーザーのimageを表示
     NSString *userImagePath = userInfo[@"profile_image_url"];
     NSURL *userImagePathURL =[[NSURL alloc] initWithString:userImagePath];
     NSData *userImagePathData = [[NSData alloc] initWithContentsOfURL:userImagePathURL];
     userImageView.image = [[UIImage alloc] initWithData:userImagePathData];
-
+    
     return cell;
 }
+
 
 @end
